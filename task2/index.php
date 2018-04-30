@@ -2,6 +2,7 @@
 namespace app;
 $root_path = dirname(__FILE__);
 
+// autoload should be added
 require_once 'App.php';
 require_once 'Controller.php';
 require_once 'utils.php';
@@ -21,6 +22,5 @@ $url = $url_parts[0];
 echo $controller->route($url, [
 	'get' => $_GET,
 	'post' => $_POST,
+	'files' => $_FILES,
 ]);
-
-?>

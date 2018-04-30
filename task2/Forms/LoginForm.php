@@ -13,8 +13,8 @@ class LoginForm extends BaseLoginForm {
 
         $res = App::Instance()->db->query(
 <<<SQL
-SELECT `id`, `pass_hash` FROM `users`
-WHERE `email` = "$email" and `active` = 1
+SELECT `id`, `pass_hash`, `active` FROM `users`
+WHERE `email` = "$email"
 SQL
         );
 
@@ -23,6 +23,11 @@ SQL
             return false;
         }
         $user_data = $res->fetch_assoc();
+
+        if (!$user_data['active']) {
+            $this->error = 'Verify your email firstly.';
+            return false;
+        }
 
         if (!password_verify($this->password, $user_data['pass_hash'])) {
             $this->error = 'Password or email is wrong';
