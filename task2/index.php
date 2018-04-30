@@ -1,16 +1,16 @@
 <?php
 namespace app;
-$root_path = dirname(__FILE__);
+$root_path = dirname(__FILE__) . '\\';
 
 // autoload should be added
-require_once 'App.php';
-require_once 'Controller.php';
-require_once 'utils.php';
+require_once $root_path . 'App.php';
+require_once $root_path . 'Controller.php';
+require_once $root_path . 'utils.php';
 
-require_once 'Forms\BaseForm.php';
-require_once 'Forms\BaseLoginForm.php';
-require_once 'Forms\RegForm.php';
-require_once 'Forms\LoginForm.php';
+require_once $root_path . 'Forms\BaseForm.php';
+require_once $root_path . 'Forms\BaseLoginForm.php';
+require_once $root_path . 'Forms\RegForm.php';
+require_once $root_path . 'Forms\LoginForm.php';
 
 use app\Controller\Controller;
 
