@@ -68,8 +68,6 @@ SQL
         $letter = utils\render_php('Templates/email_activation.php', [
             'token' => $reg_token,
         ]);
-        echo $letter;
-        exit;
         if (!mail(
             $this->email,
             'Account activation',

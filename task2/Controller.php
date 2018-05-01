@@ -21,7 +21,9 @@ class Controller {
     private function upload($params) {
         $app = App::Instance();
         $imgs = $params['files']['imgs'];
-        var_dump($imgs);
+
+
+
         if ($_SERVER['REQUEST_METHOD'] !== 'POST'
             or empty($imgs['name']) or !$imgs['name'][0]
         ) {
@@ -38,11 +40,10 @@ class Controller {
         ];
 
         $target_path = $app->config['file_storage'] . $app->user['id'] . '/';
-
+        
         if (!file_exists($target_path)) {
             mkdir($target_path);
         }
-
         for ($i = 0; $i < count($imgs['name']); $i++) {
             $orig_name = $imgs['name'][$i];
 
@@ -100,7 +101,7 @@ SQL
         if ($_SERVER['REQUEST_METHOD'] === 'POST' and $post = $params['post']) {
             $form->populate($post);
             if ($form->execute()) {
-                return "Activation link sent to $form->email";
+                return "Activation link sent to $form->email  (check spam directory)";
             }
         }
 
