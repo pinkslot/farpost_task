@@ -22,12 +22,10 @@ class Controller {
         $app = App::Instance();
         $imgs = $params['files']['imgs'];
 
-
-
         if ($_SERVER['REQUEST_METHOD'] !== 'POST'
             or empty($imgs['name']) or !$imgs['name'][0]
         ) {
-            return;
+            return "";
         }
 
         if (!$app->user) {
@@ -40,7 +38,7 @@ class Controller {
         ];
 
         $target_path = $app->config['file_storage'] . $app->user['id'] . '/';
-        
+
         if (!file_exists($target_path)) {
             mkdir($target_path);
         }
