@@ -45,8 +45,8 @@ class Controller {
         for ($i = 0; $i < count($imgs['name']); $i++) {
             $orig_name = $imgs['name'][$i];
 
-            if ($imgs['size'][$i] > 100000) {
-                array_push($result['errors'], "File $orig_name is too big.\n");
+            if ($imgs['size'][$i] > 1024 * 1024 * 10) {
+                array_push($result['errors'], "File $orig_name is too big (10 MB is max).\n");
                 continue;
             }
 
